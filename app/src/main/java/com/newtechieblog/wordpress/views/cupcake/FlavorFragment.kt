@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.newtechieblog.wordpress.views.cupcake.databinding.FragmentFlavorBinding
@@ -48,6 +47,17 @@ class FlavorFragment : Fragment() {
      */
     fun goToNextScreen() {
         findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
+    }
+
+    /**
+     * Cancel the order and start over.
+     */
+    fun cancelOrder() {
+        // Reset order in view model
+        sharedViewModel.resetOrder()
+
+        // Navigate back to [StartFragment] to start over.
+        findNavController().navigate(R.id.action_flavorFragment_to_startFragment)
     }
 
     /**
